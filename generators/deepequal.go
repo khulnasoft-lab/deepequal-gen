@@ -339,9 +339,12 @@ func (g *genDeepEqual) copyableAndInBounds(t *types.Type) bool {
 // if the type is wrong. DeepEqual allows more efficient deep copy
 // implementations to be defined by the type's author.  The correct signature
 // for a type T is:
-//    func (t T) DeepEqual(t *T)
+//
+//	func (t T) DeepEqual(t *T)
+//
 // or:
-//    func (t *T) DeepEqual(t *T)
+//
+//	func (t *T) DeepEqual(t *T)
 func deepEqualMethod(t *types.Type) (*types.Signature, error) {
 	f, found := t.Methods["DeepEqual"]
 	if !found {
